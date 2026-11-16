@@ -1,0 +1,35 @@
+---
+Name: silverwind-blocks
+After:
+  - '#elementalconfig'
+---
+DNADesign\Elemental\Models\BaseElement:
+  extensions:
+    - Antlion\SilverwindBlocks\Extensions\ElementStyleExtension
+    - Antlion\SilverwindBlocks\Extensions\GridColumnExtension
+    - Antlion\SilverwindBlocks\Extensions\ModalTriggerExtension
+    - Antlion\SilverwindBlocks\Extensions\NestedEditLinkExtension
+
+SilverStripe\LinkField\Models\Link:
+  extensions:
+    - Antlion\SilverwindBlocks\Extensions\LinkStyleExtension
+
+SilverStripe\CMS\Model\SiteTree:
+  extensions:
+    - Antlion\SilverwindBlocks\Extensions\FAQSchemaExtension
+
+Antlion\SilverwindBlocks\Extensions\ElementStyleExtension:
+  # Blocks with their own background span the page; everything else sits at site width
+  default_widths:
+    Antlion\SilverwindBlocks\Elements\ElementHero: full
+    Antlion\SilverwindBlocks\Elements\ElementSection: full
+    Antlion\SilverwindBlocks\Elements\ElementSlider: full
+  default_headings:
+    Antlion\SilverwindBlocks\Elements\ElementCard: h3
+    Antlion\SilverwindBlocks\Elements\ElementMenu: h3
+
+# The hero slider is opt-in per page type. Add this to your project config:
+#
+Page:
+  extensions:
+    - Antlion\SilverwindBlocks\Extensions\PageSliderExtension
